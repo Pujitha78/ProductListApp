@@ -14,7 +14,9 @@ class ProductsViewModel: ObservableObject {
     }
     
     func fetchProducts() async {
-        loadingState = true
+        if productsList.isEmpty {
+            loadingState = true
+        }
         errorString = nil
         
         defer {

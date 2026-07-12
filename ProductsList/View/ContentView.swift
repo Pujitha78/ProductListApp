@@ -24,11 +24,16 @@ struct ContentView: View {
                             ProductRowView(product: product)
                         }
                     }
+                    .refreshable {
+                        await viewModel.fetchProducts()
+                    }
                 }
             }
             .navigationTitle("Product List")
             .task {
-                await viewModel.fetchProducts()
+                if viewModel.productsList.isEmpty {
+                    await viewModel.fetchProducts()
+                }
             }
         }
     }
@@ -38,14 +43,15 @@ struct ProductRowView: View {
     var product: ProductsResponseModel
     var body: some View {
         HStack {
-            AsyncImage(url: URL(string: product.image ?? "")!) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50, height: 50)
-            } placeholder: {
-                ProgressView()
-            }
+            ProductImageView(urlString: product.image ?? "", imageKey: "\(product.id ?? 0)")
+//            AsyncImage(url: URL(string: product.image ?? "")!) { image in
+//                image
+//                    .resizable()
+//                    .scaledToFit()
+//                    .frame(width: 50, height: 50)
+//            } placeholder: {
+//                ProgressView()
+//            }
             VStack(alignment: .leading, spacing: 6) {
                 Text(product.title ?? "")
                     .font(.headline)

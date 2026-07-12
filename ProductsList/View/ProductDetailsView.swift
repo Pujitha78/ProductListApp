@@ -49,6 +49,23 @@ struct ProductDetailsView: View {
     }
 }
 
+//struct ProductImageView: View {
+//    var urlString: String
+//    var body: some View {
+//        ZStack {
+//            AsyncImage(url: URL(string: urlString)) { image in
+//                image
+//                    .resizable()
+//                    .scaledToFit()
+//            } placeholder: {
+//                ProgressView()
+//            }
+//            .frame(maxWidth: .infinity)
+//            .frame(height: 250)
+//        }
+//    }
+//}
+
 #Preview {
     ZStack {
         ProductDetailsView(product: ProductsResponseModel(id: 3, title: "title", price: 10000, description: "product details", category: "cat", image: "ghjkvbn", rating: Rating(rate: 10000, count: 2)))
