@@ -1,6 +1,10 @@
 import Foundation
 
 final class MockService: ProductServiceProtocol {
+    func fetchDummyProducts(page: Int) async throws -> DummyProductResponse {
+        return DummyProductResponse(products: [], total: 1, skip: 5, limit: 10)
+    }
+    
 
     var shouldThrowError = false
 

@@ -68,6 +68,6 @@ struct ProductDetailsView: View {
 
 #Preview {
     ZStack {
-        ProductDetailsView(product: ProductsResponseModel(id: 3, title: "title", price: 10000, description: "product details", category: "cat", image: "ghjkvbn", rating: Rating(rate: 10000, count: 2)))
+        ProductDetailsView(product: ProductsResponseModel(id: 3, title: "title", price: 10000, description: "product details", category: "cat", image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png", rating: Rating(rate: 10000, count: 2)))
     }
 }
